@@ -1,0 +1,381 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 130023424 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2718), pid=21892, tid=21893
+#
+# JRE version:  (11.0.2+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.2+9-b159.56, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P" (or dumping to /home/aleksey/IdeaProjects/mail/core.21892)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -javaagent:/home/aleksey/application/idea/lib/idea_rt.jar=33043:/home/aleksey/application/idea/bin -Dfile.encoding=UTF-8 com.example.mail.MailApplication
+
+Host: Intel(R) Core(TM) i3-3217U CPU @ 1.80GHz, 4 cores, 7G, Ubuntu 18.04.2 LTS
+Time: Thu May 23 13:49:42 2019 MSK elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007ff8fc016000):  JavaThread "Unknown thread" [_thread_in_vm, id=21893, stack(0x00007ff903740000,0x00007ff903841000)]
+
+Stack: [0x00007ff903740000,0x00007ff903841000],  sp=0x00007ff90383f200,  free space=1020k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xd8bbba]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x18a
+V  [libjvm.so+0xd8ca53]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x43
+V  [libjvm.so+0x69f978]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xe8
+V  [libjvm.so+0xb92879]  os::pd_commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0xe9
+V  [libjvm.so+0xb8a3ad]  os::commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x1d
+V  [libjvm.so+0x7991d1]  G1PageBasedVirtualSpace::commit_preferred_pages(unsigned long, unsigned long)+0x71
+V  [libjvm.so+0x799325]  G1PageBasedVirtualSpace::commit_internal(unsigned long, unsigned long)+0x85
+V  [libjvm.so+0x79951a]  G1PageBasedVirtualSpace::commit(unsigned long, unsigned long)+0x10a
+V  [libjvm.so+0x79f066]  G1RegionsLargerThanCommitSizeMapper::commit_regions(unsigned int, unsigned long, WorkGang*)+0x46
+V  [libjvm.so+0x807588]  HeapRegionManager::commit_regions(unsigned int, unsigned long, WorkGang*)+0x88
+V  [libjvm.so+0x8080e4]  HeapRegionManager::make_regions_available(unsigned int, unsigned int, WorkGang*)+0x34
+V  [libjvm.so+0x80847e]  HeapRegionManager::expand_at(unsigned int, unsigned int, WorkGang*) [clone .part.146]+0x7e
+V  [libjvm.so+0x769a30]  G1CollectedHeap::expand(unsigned long, WorkGang*, double*)+0xc0
+V  [libjvm.so+0x76a135]  G1CollectedHeap::initialize()+0x6a5
+V  [libjvm.so+0xd4f551]  Universe::initialize_heap()+0x41
+V  [libjvm.so+0xd4f801]  universe_init()+0x41
+V  [libjvm.so+0x81d82f]  init_globals()+0x5f
+V  [libjvm.so+0xd2ce6c]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x3dc
+V  [libjvm.so+0x8c4cdc]  JNI_CreateJavaVM+0x5c
+C  [libjli.so+0x4814]  JavaMain+0x84
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00000000022ded90, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x00007ff8fc02c000 GCTaskThread "GC Thread#0" [stack: 0x00007ff8e9228000,0x00007ff8e9328000] [id=21894]
+  0x00007ff8fc05d000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00007ff8e8197000,0x00007ff8e8297000] [id=21895]
+  0x00007ff8fc05f000 ConcurrentGCThread "G1 Conc#0" [stack: 0x00007ff8e8095000,0x00007ff8e8195000] [id=21896]
+
+[error occurred during error reporting (printing all threads), id 0xb, SIGSEGV (0xb) at pc=0x00007ff901d770c5]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ff8fc012980] Heap_lock - owner thread: 0x00007ff8fc016000
+
+Heap address: 0x0000000084e00000, size: 1970 MB, Compressed Oops mode: Non-zero based: 0x0000000084e00000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 fd:00 1185632                            /home/aleksey/application/idea/jre64/bin/java
+00601000-00602000 r--p 00001000 fd:00 1185632                            /home/aleksey/application/idea/jre64/bin/java
+00602000-00603000 rw-p 00002000 fd:00 1185632                            /home/aleksey/application/idea/jre64/bin/java
+022c4000-022e5000 rw-p 00000000 00:00 0                                  [heap]
+8ca00000-100000000 ---p 00000000 00:00 0 
+7ff8d4000000-7ff8d4021000 rw-p 00000000 00:00 0 
+7ff8d4021000-7ff8d8000000 ---p 00000000 00:00 0 
+7ff8d9a7a000-7ff8dc000000 rw-p 00000000 00:00 0 
+7ff8dc000000-7ff8dc021000 rw-p 00000000 00:00 0 
+7ff8dc021000-7ff8e0000000 ---p 00000000 00:00 0 
+7ff8e006e000-7ff8e0270000 rw-p 00000000 00:00 0 
+7ff8e0270000-7ff8e4000000 ---p 00000000 00:00 0 
+7ff8e4000000-7ff8e4021000 rw-p 00000000 00:00 0 
+7ff8e4021000-7ff8e8000000 ---p 00000000 00:00 0 
+7ff8e8093000-7ff8e8094000 ---p 00000000 00:00 0 
+7ff8e8094000-7ff8e8195000 rw-p 00000000 00:00 0 
+7ff8e8195000-7ff8e8196000 ---p 00000000 00:00 0 
+7ff8e8196000-7ff8e8297000 rw-p 00000000 00:00 0 
+7ff8e8297000-7ff8e8e22000 ---p 00000000 00:00 0 
+7ff8e8e22000-7ff8e9226000 rw-p 00000000 00:00 0 
+7ff8e9226000-7ff8e9227000 ---p 00000000 00:00 0 
+7ff8e9227000-7ff8e932d000 rw-p 00000000 00:00 0 
+7ff8e932d000-7ff8e94fb000 ---p 00000000 00:00 0 
+7ff8e94fb000-7ff8e976b000 rwxp 00000000 00:00 0 
+7ff8e976b000-7ff8e9ba2000 ---p 00000000 00:00 0 
+7ff8e9ba2000-7ff8e9e12000 rwxp 00000000 00:00 0 
+7ff8e9e12000-7ff8f84fb000 ---p 00000000 00:00 0 
+7ff8f84fb000-7ff8fb7c5000 r--s 00000000 fd:00 921216                     /home/aleksey/application/idea/jre64/lib/modules
+7ff8fb7c5000-7ff8fb7ca000 r-xp 00000000 fd:00 921195                     /home/aleksey/application/idea/jre64/lib/libjimage.so
+7ff8fb7ca000-7ff8fb9ca000 ---p 00005000 fd:00 921195                     /home/aleksey/application/idea/jre64/lib/libjimage.so
+7ff8fb9ca000-7ff8fb9cb000 r--p 00005000 fd:00 921195                     /home/aleksey/application/idea/jre64/lib/libjimage.so
+7ff8fb9cb000-7ff8fb9cc000 rw-p 00006000 fd:00 921195                     /home/aleksey/application/idea/jre64/lib/libjimage.so
+7ff8fb9cc000-7ff8fb9d3000 r-xp 00000000 fd:00 921215                     /home/aleksey/application/idea/jre64/lib/libzip.so
+7ff8fb9d3000-7ff8fbbd2000 ---p 00007000 fd:00 921215                     /home/aleksey/application/idea/jre64/lib/libzip.so
+7ff8fbbd2000-7ff8fbbd3000 r--p 00006000 fd:00 921215                     /home/aleksey/application/idea/jre64/lib/libzip.so
+7ff8fbbd3000-7ff8fbbd4000 rw-p 00007000 fd:00 921215                     /home/aleksey/application/idea/jre64/lib/libzip.so
+7ff8fbbd4000-7ff8fbbdf000 r-xp 00000000 fd:00 2626843                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7ff8fbbdf000-7ff8fbdde000 ---p 0000b000 fd:00 2626843                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7ff8fbdde000-7ff8fbddf000 r--p 0000a000 fd:00 2626843                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7ff8fbddf000-7ff8fbde0000 rw-p 0000b000 fd:00 2626843                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7ff8fbde0000-7ff8fbde6000 rw-p 00000000 00:00 0 
+7ff8fbde6000-7ff8fbdfd000 r-xp 00000000 fd:00 2626837                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7ff8fbdfd000-7ff8fbffc000 ---p 00017000 fd:00 2626837                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7ff8fbffc000-7ff8fbffd000 r--p 00016000 fd:00 2626837                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7ff8fbffd000-7ff8fbffe000 rw-p 00017000 fd:00 2626837                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7ff8fbffe000-7ff8fc000000 rw-p 00000000 00:00 0 
+7ff8fc000000-7ff8fc07c000 rw-p 00000000 00:00 0 
+7ff8fc07c000-7ff900000000 ---p 00000000 00:00 0 
+7ff900057000-7ff900062000 r-xp 00000000 fd:00 2626854                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7ff900062000-7ff900261000 ---p 0000b000 fd:00 2626854                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7ff900261000-7ff900262000 r--p 0000a000 fd:00 2626854                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7ff900262000-7ff900263000 rw-p 0000b000 fd:00 2626854                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7ff900263000-7ff90026b000 r-xp 00000000 fd:00 2626839                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7ff90026b000-7ff90046b000 ---p 00008000 fd:00 2626839                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7ff90046b000-7ff90046c000 r--p 00008000 fd:00 2626839                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7ff90046c000-7ff90046d000 rw-p 00009000 fd:00 2626839                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7ff90046d000-7ff900477000 r-xp 00000000 fd:00 921180                     /home/aleksey/application/idea/jre64/lib/libinstrument.so
+7ff900477000-7ff900676000 ---p 0000a000 fd:00 921180                     /home/aleksey/application/idea/jre64/lib/libinstrument.so
+7ff900676000-7ff900677000 r--p 00009000 fd:00 921180                     /home/aleksey/application/idea/jre64/lib/libinstrument.so
+7ff900677000-7ff900678000 rw-p 0000a000 fd:00 921180                     /home/aleksey/application/idea/jre64/lib/libinstrument.so
+7ff900678000-7ff9006a1000 r-xp 00000000 fd:00 921185                     /home/aleksey/application/idea/jre64/lib/libjava.so
+7ff9006a1000-7ff9008a0000 ---p 00029000 fd:00 921185                     /home/aleksey/application/idea/jre64/lib/libjava.so
+7ff9008a0000-7ff9008a1000 r--p 00028000 fd:00 921185                     /home/aleksey/application/idea/jre64/lib/libjava.so
+7ff9008a1000-7ff9008a3000 rw-p 00029000 fd:00 921185                     /home/aleksey/application/idea/jre64/lib/libjava.so
+7ff9008a3000-7ff9008b0000 r-xp 00000000 fd:00 921214                     /home/aleksey/application/idea/jre64/lib/libverify.so
+7ff9008b0000-7ff900aaf000 ---p 0000d000 fd:00 921214                     /home/aleksey/application/idea/jre64/lib/libverify.so
+7ff900aaf000-7ff900ab1000 r--p 0000c000 fd:00 921214                     /home/aleksey/application/idea/jre64/lib/libverify.so
+7ff900ab1000-7ff900ab2000 rw-p 0000e000 fd:00 921214                     /home/aleksey/application/idea/jre64/lib/libverify.so
+7ff900ab2000-7ff900ab9000 r-xp 00000000 fd:00 2626894                    /lib/x86_64-linux-gnu/librt-2.27.so
+7ff900ab9000-7ff900cb8000 ---p 00007000 fd:00 2626894                    /lib/x86_64-linux-gnu/librt-2.27.so
+7ff900cb8000-7ff900cb9000 r--p 00006000 fd:00 2626894                    /lib/x86_64-linux-gnu/librt-2.27.so
+7ff900cb9000-7ff900cba000 rw-p 00007000 fd:00 2626894                    /lib/x86_64-linux-gnu/librt-2.27.so
+7ff900cba000-7ff900cd1000 r-xp 00000000 fd:00 2621446                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ff900cd1000-7ff900ed0000 ---p 00017000 fd:00 2621446                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ff900ed0000-7ff900ed1000 r--p 00016000 fd:00 2621446                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ff900ed1000-7ff900ed2000 rw-p 00017000 fd:00 2621446                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ff900ed2000-7ff90106f000 r-xp 00000000 fd:00 2626816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7ff90106f000-7ff90126e000 ---p 0019d000 fd:00 2626816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7ff90126e000-7ff90126f000 r--p 0019c000 fd:00 2626816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7ff90126f000-7ff901270000 rw-p 0019d000 fd:00 2626816                    /lib/x86_64-linux-gnu/libm-2.27.so
+7ff901270000-7ff9013e9000 r-xp 00000000 fd:00 3015244                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7ff9013e9000-7ff9015e9000 ---p 00179000 fd:00 3015244                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7ff9015e9000-7ff9015f3000 r--p 00179000 fd:00 3015244                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7ff9015f3000-7ff9015f5000 rw-p 00183000 fd:00 3015244                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25
+7ff9015f5000-7ff9015f9000 rw-p 00000000 00:00 0 
+7ff9015f9000-7ff902691000 r-xp 00000000 fd:00 1185629                    /home/aleksey/application/idea/jre64/lib/server/libjvm.so
+7ff902691000-7ff902891000 ---p 01098000 fd:00 1185629                    /home/aleksey/application/idea/jre64/lib/server/libjvm.so
+7ff902891000-7ff90295f000 r--p 01098000 fd:00 1185629                    /home/aleksey/application/idea/jre64/lib/server/libjvm.so
+7ff90295f000-7ff902999000 rw-p 01166000 fd:00 1185629                    /home/aleksey/application/idea/jre64/lib/server/libjvm.so
+7ff902999000-7ff9029f2000 rw-p 00000000 00:00 0 
+7ff9029f2000-7ff902bd9000 r-xp 00000000 fd:00 2626753                    /lib/x86_64-linux-gnu/libc-2.27.so
+7ff902bd9000-7ff902dd9000 ---p 001e7000 fd:00 2626753                    /lib/x86_64-linux-gnu/libc-2.27.so
+7ff902dd9000-7ff902ddd000 r--p 001e7000 fd:00 2626753                    /lib/x86_64-linux-gnu/libc-2.27.so
+7ff902ddd000-7ff902ddf000 rw-p 001eb000 fd:00 2626753                    /lib/x86_64-linux-gnu/libc-2.27.so
+7ff902ddf000-7ff902de3000 rw-p 00000000 00:00 0 
+7ff902de3000-7ff902de6000 r-xp 00000000 fd:00 2626776                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7ff902de6000-7ff902fe5000 ---p 00003000 fd:00 2626776                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7ff902fe5000-7ff902fe6000 r--p 00002000 fd:00 2626776                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7ff902fe6000-7ff902fe7000 rw-p 00003000 fd:00 2626776                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7ff902fe7000-7ff902ff6000 r-xp 00000000 fd:00 1185620                    /home/aleksey/application/idea/jre64/lib/jli/libjli.so
+7ff902ff6000-7ff9031f5000 ---p 0000f000 fd:00 1185620                    /home/aleksey/application/idea/jre64/lib/jli/libjli.so
+7ff9031f5000-7ff9031f6000 r--p 0000e000 fd:00 1185620                    /home/aleksey/application/idea/jre64/lib/jli/libjli.so
+7ff9031f6000-7ff9031f7000 rw-p 0000f000 fd:00 1185620                    /home/aleksey/application/idea/jre64/lib/jli/libjli.so
+7ff9031f7000-7ff903211000 r-xp 00000000 fd:00 2626886                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7ff903211000-7ff903410000 ---p 0001a000 fd:00 2626886                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7ff903410000-7ff903411000 r--p 00019000 fd:00 2626886                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7ff903411000-7ff903412000 rw-p 0001a000 fd:00 2626886                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7ff903412000-7ff903416000 rw-p 00000000 00:00 0 
+7ff903416000-7ff903432000 r-xp 00000000 fd:00 2626925                    /lib/x86_64-linux-gnu/libz.so.1.2.11
+7ff903432000-7ff903631000 ---p 0001c000 fd:00 2626925                    /lib/x86_64-linux-gnu/libz.so.1.2.11
+7ff903631000-7ff903632000 r--p 0001b000 fd:00 2626925                    /lib/x86_64-linux-gnu/libz.so.1.2.11
+7ff903632000-7ff903633000 rw-p 0001c000 fd:00 2626925                    /lib/x86_64-linux-gnu/libz.so.1.2.11
+7ff903633000-7ff90365a000 r-xp 00000000 fd:00 2626725                    /lib/x86_64-linux-gnu/ld-2.27.so
+7ff9036f0000-7ff903737000 rw-p 00000000 00:00 0 
+7ff903737000-7ff903740000 ---p 00000000 00:00 0 
+7ff903740000-7ff903744000 ---p 00000000 00:00 0 
+7ff903744000-7ff903845000 rw-p 00000000 00:00 0 
+7ff903850000-7ff903858000 rw-s 00000000 fd:00 3413030                    /tmp/hsperfdata_aleksey/21892
+7ff903858000-7ff903859000 ---p 00000000 00:00 0 
+7ff903859000-7ff90385a000 r--p 00000000 00:00 0 
+7ff90385a000-7ff90385b000 r--p 00027000 fd:00 2626725                    /lib/x86_64-linux-gnu/ld-2.27.so
+7ff90385b000-7ff90385c000 rw-p 00028000 fd:00 2626725                    /lib/x86_64-linux-gnu/ld-2.27.so
+7ff90385c000-7ff90385d000 rw-p 00000000 00:00 0 
+7ffeabc75000-7ffeabc99000 rw-p 00000000 00:00 0                          [stack]
+7ffeabd03000-7ffeabd06000 r--p 00000000 00:00 0                          [vvar]
+7ffeabd06000-7ffeabd08000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -javaagent:/home/aleksey/application/idea/lib/idea_rt.jar=33043:/home/aleksey/application/idea/bin -Dfile.encoding=UTF-8 
+java_command: com.example.mail.MailApplication
+java_class_path (initial): /home/aleksey/IdeaProjects/mail/build/classes/java/main:/home/aleksey/IdeaProjects/mail/build/resources/main:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.8/448003bc1b234aac04b58e27d7755c12c3ec4236/lombok-1.18.8.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-data-jpa/2.1.5.RELEASE/f33f69b3744d07f832db6ab48eab227ccde9e922/spring-boot-starter-data-jpa-2.1.5.RELEASE.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/2.1.5.RELEASE/44469b7bff6480f9c7fa40b338385acb88f9826/spring-boot-starter-thymeleaf-2.1.5.RELEASE.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/2.1.5.RELEASE/d46494b46a626cbd8f253066a2d7413412efc908/spring-boot-starter-web-2.1.5.RELEASE.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-aop/2.1.5.RELEASE/464cfb573009e724ea76ca404f106b1b19e759ff/spring-boot-starter-aop-2.1.5.RELEASE.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-devtools/2.1.5.RELEASE/82da693e16b112f535e2cb2682a29b23f7378dd0/spring-boot-devtools-2.1.5.RELEASE.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-jdbc/2.1.5.RELEASE/6f187e708a47b0d37552a01292ce649a97a0059d/spring-boot-starter-jdbc-2.1.5.RELEASE.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/javax.transaction/javax.transaction-api/1.3/e006adf5cf3cca2181d16bd640ecb80148ec0fce/javax.transaction-api-1.3.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.199/7bf08152984ed8859740ae3f97fae6c72771ae45/h2-1.4.199.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/8531ad5ac454cc2deb9d4d32c40c4d7451939b5d/jaxb-api-2.3.1.jar:/home/aleksey/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-core/5.3.10.Final/e608b85432
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     bool BytecodeVerificationLocal                = false                                     {product} {command line}
+     bool BytecodeVerificationRemote               = false                                     {product} {command line}
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 130023424                                 {product} {ergonomic}
+     bool ManagementServer                         = true                                      {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2065694720                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 6973028                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 244685212                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+USERNAME=aleksey
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xd8cab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xd8cab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xd8cab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xb8e900], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xb8e900], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xd8cab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xb8e7a0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.2 LTS"
+uname:Linux 4.18.0-20-generic #21~18.04.1-Ubuntu SMP Wed May 8 08:43:37 UTC 2019 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 31058, NOFILE 1048576, AS infinity, DATA infinity, FSIZE infinity
+load average:6.42 4.72 2.58
+
+/proc/meminfo:
+MemTotal:        8061564 kB
+MemFree:          120900 kB
+MemAvailable:      49264 kB
+Buffers:            8164 kB
+Cached:           757152 kB
+SwapCached:         2880 kB
+Active:          6642756 kB
+Inactive:         872032 kB
+Active(anon):    6604192 kB
+Inactive(anon):   825216 kB
+Active(file):      38564 kB
+Inactive(file):    46816 kB
+Unevictable:         128 kB
+Mlocked:             128 kB
+SwapTotal:       1003516 kB
+SwapFree:           5796 kB
+Dirty:               584 kB
+Writeback:             0 kB
+AnonPages:       6747980 kB
+Mapped:           242708 kB
+Shmem:            679188 kB
+Slab:             140304 kB
+SReclaimable:      48940 kB
+SUnreclaim:        91364 kB
+KernelStack:       26032 kB
+PageTables:       140056 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     5034296 kB
+Committed_AS:   23283980 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      393980 kB
+DirectMap2M:     7888896 kB
+
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+62117
+
+
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+
+
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+32768
+
+
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-3
+cpu_memory_nodes: 0
+active_processor_count: 4
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 7695785984
+memory_max_usage_in_bytes: 8376320
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, clmul, erms, ht, tsc, tscinvbit, tscinv
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Core(TM) i3-3217U CPU @ 1.80GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer xsave avx f16c lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+
+Memory: 4k page, physical 8061564k(121404k free), swap 1003516k(5796k free)
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.2+9-b159.56) for linux-amd64 JRE (11.0.2+9-b159.56), built on Apr 30 2019 13:01:25 by "" with gcc 4.8.5 20150623 (Red Hat 4.8.5-28)
+
+END.
